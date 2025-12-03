@@ -9,6 +9,30 @@ A Model Context Protocol (MCP) server that provides tools for converting JSON da
 - **Token Savings Analysis**: Analyze potential token savings before conversion
 - **MCP Protocol Support**: Full MCP server implementation for integration with LLM applications
 
+## Quick Start
+
+### 1. Install the Package
+```bash
+npm install -g json-to-toon-mcp-server
+```
+
+### 2. Configure Claude Desktop
+Add this to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "json-to-toon": {
+      "command": "npx",
+      "args": ["json-to-toon-mcp-server"]
+    }
+  }
+}
+```
+
+### 3. Restart Claude Desktop
+Restart Claude Desktop and the MCP server will be available.
+
 ## Installation
 
 ```bash
@@ -119,6 +143,64 @@ npm run dev
 ## Integration with MCP Clients
 
 This server can be integrated with any MCP-compatible client. The server communicates via stdio, making it suitable for integration with various LLM applications and development tools.
+
+### Manual Configuration for Claude Desktop
+
+To add this MCP server to Claude Desktop manually, add the following configuration to your `claude_desktop_config.json` file.
+
+**Config file locations:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+To add this MCP server to Claude Desktop manually, add the following configuration to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "json-to-toon": {
+      "command": "npx",
+      "args": ["json-to-toon-mcp-server"],
+      "env": {}
+    }
+  }
+}
+```
+
+**Alternative configuration using local installation:**
+
+```json
+{
+  "mcpServers": {
+    "json-to-toon": {
+      "command": "node",
+      "args": ["/path/to/json-to-toon-mcp-server/index.js"],
+      "env": {}
+    }
+  }
+}
+```
+
+**Configuration for development (from source):**
+
+```json
+{
+  "mcpServers": {
+    "json-to-toon": {
+      "command": "node",
+      "args": ["index.js"],
+      "cwd": "/path/to/json-to-toon-mcp-server"
+    }
+  }
+}
+```
+
+### Configuration Notes
+
+- Replace `/path/to/json-to-toon-mcp-server` with the actual path to your installation
+- The `npx` method requires the package to be installed globally (`npm install -g json-to-toon-mcp-server`)
+- The server communicates via stdio, so no additional network configuration is needed
+- After adding the configuration, restart Claude Desktop for changes to take effect
 
 ## TOON Format Benefits
 
