@@ -1,6 +1,6 @@
 {
   "name": "json-to-toon-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for converting JSON to TOON (Token-Oriented Object Notation) format - saves 30-60% on AI tokens",
   "main": "index.js",
   "type": "module",
